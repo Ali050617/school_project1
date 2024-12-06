@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movies List</title>
+</head>
+<body>
+    <h1>Movies List</h1>
+    <button><a href="{% url 'movies:create' %}">Create Movies</a></button>
+    <br>
+    <button><a href="{% url 'home' %}">Back to home</a></button>
+    {% for movies in movies %}
+        <a href="{{ movies.get_detail_url }}">
+            <h3>{{ movies.title }}</h3>
+            <p>{{ movies.director }}</p>
+        </a>
+        <br><br>
+    {% empty %}
+        <h3>No movies</h3>
+    {% endfor %}
+
+
+</body>
+</html>

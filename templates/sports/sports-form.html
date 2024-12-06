@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if product %}Update Product{% else %}Create Product{% endif %}</title>
+</head>
+<body>
+    <h1>{% if product %}Update Product{% else %}Create Product{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button><a href="{% url 'movies:list' %}">Back to list</a></button>
+        <br>
+        <label for="event_name">Event Name</label><br>
+        <input type="text" name="event_name" id="event_name" value="{{ sports.event_name }}"><br>
+
+        <label for="location">Location</label><br>
+        <input type="text" name="location" id="location" value="{{ sports.location }}"><br>
+
+        <label for="date">Date</label><br>
+        <input type="date" name="date" id="date" value="{{ sports.date }}"><br>
+
+        <label for="sport_type">Sport Type</label><br>
+        <input type="text" name="sport_type" id="sport_type" value="{{ sports.sport_type }}"><br>
+
+        {% if sports %}
+            <button type="submit">Update</button>
+            <button><a href="{{ sports.get_detail_url }}">Back to Detail</a></button>
+        {% else %}
+            <button type="submit">Create</button>
+        {% endif %}
+    </form>
+
+</body>
+</html>
